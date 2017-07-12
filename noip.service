@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve noip
+After=network.target
+
+[Service]
+User=noip
+Group=nginx
+WorkingDirectory=/home/noip/public
+Environment="PATH=/home/noip/public/venv/bin"
+ExecStart=/home/noip/public/venv/bin/uwsgi --ini wsgi.ini
+
+[Install]
+WantedBy=multi-user.target
